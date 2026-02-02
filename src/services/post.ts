@@ -1,0 +1,19 @@
+import axios from "axios";
+
+export const createPost = async (
+  userId: string,
+  content: string | undefined
+) => {
+  const postData = {
+    user_id: userId,
+    content,
+  };
+
+  const createdPost = await axios.post(`http://localhost:3000/api/posts`, postData);
+  return createdPost.data;
+};
+
+export const getAllPosts = async () => {
+  const response = await axios.get(`http://localhost:3000/api/posts`);
+  return response.data;
+};
